@@ -87,8 +87,6 @@ public class DisplayMessageActivity extends AppCompatActivity {
                                 JSONObject thumbnail = resultt.getJSONObject("thumbnail");
                                 JSONObject comics = resultt.getJSONObject("comics");
                                 Intent intent = new Intent(DisplayMessageActivity.this, ShowCharacter.class);
-                                //EditText editText = (EditText) findViewById(R.id.editText);
-                                //String message = editText.getText().toString();
                                 intent.putExtra("charactername", resultt.getString("name"));
                                 intent.putExtra("comicsurl", comics.getString("collectionURI")+"?ts=thesoer&apikey=001ac6c73378bbfff488a36141458af2&hash=72e5ed53d1398abb831c3ceec263f18b");
                                 intent.putExtra("thumbnailImgUrl", thumbnail.getString("path")+"/portrait_uncanny.jpg");
