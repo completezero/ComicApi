@@ -2,10 +2,12 @@ package com.example.michalhoracek.comicapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -41,6 +43,10 @@ public class DisplayMessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_message);
         Button button = findViewById(R.id.button3);
         final EditText editinput = findViewById(R.id.editText);
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String EditValue = preferences.getString("editvalue","");
+        if(EditValue != "")
+            editinput.setText(EditValue);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +92,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
                                 intent.putExtra("charactername", resultt.getString("name"));
                                 intent.putExtra("comicsurl", comics.getString("collectionURI")+"?ts=thesoer&apikey=001ac6c73378bbfff488a36141458af2&hash=72e5ed53d1398abb831c3ceec263f18b");
                                 intent.putExtra("thumbnailImgUrl", thumbnail.getString("path")+"/portrait_uncanny.jpg");
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("editvalue",editinput.getText().toString());
+                                editor.commit();
                                 startActivity(intent);
                             }
                             else

@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen"
+        <activity
+            android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +22,7 @@
         </activity>
         <activity
             android:name=".DisplayMessageActivity"
+            android:label="Get character by name"
             android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
@@ -31,6 +32,7 @@
         </activity>
         <activity
             android:name=".ShowCharacter"
+            android:label="character"
             android:parentActivityName=".DisplayMessageActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
@@ -38,7 +40,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DisplayMessageActivity" />
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" android:label="Menu"/>
+        <activity android:name=".About"
+            android:label="About"
+            android:parentActivityName=".MainActivity">></activity>
     </application>
 
 </manifest>
